@@ -11,7 +11,7 @@
 #include <time.h>
 //#include <windows.h>
 
-#define N 10
+#define N 20
 #define ARRAY_SIZE(x) (sizeof(x)/sizeof(x[0]))
 
 bool choosing[N];
@@ -84,13 +84,10 @@ void process(void* arg)
 			Sleep(1);
 		}
 
-		printf("i = %u, r = %d, g_rand = %d\r\n", i, r, g_rand);
-
-		
 		g_process_number++;
 	     // critical section...
 
-		printf("leave i = %u, number[%d] = %d, r = %d, g_rand = %d\r\n", i, i, number[i], r, g_rand);
+		printf("leave i = %u, number[%d] = %d, r = %d, g_rand = %d\r\n\r\n", i, i, number[i], r, g_rand);
 		g_rand = 0;
 		number[i] = 0;
 	     // non-critical section...
@@ -111,6 +108,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	while(g_process_number < N)
 		Sleep(100);
 
+	printf("Test succeed!\r\n");
 	system("pause");
 	return 0;
 }
